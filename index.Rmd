@@ -22,7 +22,7 @@ class: inverse, center, middle
 ![](img/load_tidyverse.png)
 
 ---
-background-image: url(workflow.jpg)
+background-image: url(img/workflow.jpg)
 background-size: center
 
 ---
