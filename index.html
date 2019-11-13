@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 ## Clase 5: Un paquete para gobernarlos a todos
 ### Alex Bajaña
 ### infoRmal
-### 2019/11 (updated: 2019-11-11)
+### 2019/11 (Actualizado: 2019-11-13)
 
 ---
 
@@ -24,8 +24,8 @@ class: inverse, center, middle
 
 # Tidyverse
 
-![](logo_tidy.jpg)
-![](load_tidyverse.png)
+![](img/logo_tidy.jpg)
+![](img/load_tidyverse.png)
 
 ---
 background-image: url(workflow.jpg)
@@ -313,9 +313,9 @@ filter(tabla,is.na(ventas_t)) %&gt;% head(3)
 ## # A tibble: 3 x 12
 ##   activ provin tipo_c grupo_e gran_c clase  anio   mes estado compras_t
 ##   &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt;   &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;      &lt;dbl&gt;
-## 1 A     NAPO   SECTO~ NO      NO     OTROS  2016     3 ACTIVO        0 
-## 2 A     PICHI~ SECTO~ NO      NO     ESPE~  2016     7 ACTIVO   280586.
-## 3 B     BOLIV~ ND     NO      NO     OTROS  2017    10 SUSPE~       12 
+## 1 A     IMBAB~ SECTO~ NO      NO     OTROS  2015     2 ACTIVO   709441.
+## 2 B     ZAMOR~ SECTO~ SI      SI     ESPE~  2017    12 ACTIVO 12533963.
+## 3 C     ESMER~ ND     NO      NO     RISE   2015     7 ACTIVO     1356.
 ## # ... with 2 more variables: ventas_t &lt;dbl&gt;, impuesto_c &lt;dbl&gt;
 ```
 
@@ -435,13 +435,44 @@ filter(tabla,mes %in% c(5, 6, 7, 8))
 
 ¿Cual es el rango de ingresos de las empresas en estado activo que pertenecen a un grupo económico entre los primeros 6 meses del 2015?
 
-[Hint:]() sobre un vector númerico la función `min` devuelve el minimo y `máx` el m+aximo
+[Hint:]() sobre un vector númerico la función `min` devuelve el minimo y `máx` el máximo
 
 ---
 
 class: inverse, center, middle
 
 # arrange
+---
+# Operaciones con booleanos
+
+Intersección de condiciones.
+
+
+```r
+ filter(activ == "E", tipo_c == "SECTOR PRIVADO")        
+```
+
+Primera condición verdadera, segunda falsa.
+
+
+```r
+ filter(activ == "E", !tipo_c == "SECTOR PRIVADO")       
+```
+
+Unión
+
+
+```r
+ filter(activ == "E" | tipo_c == "SECTOR PRIVADO")       #  unión.
+```
+
+Solo una de las dos condiciones se cumple:
+
+
+```r
+ filter(xor(activ == "E", tipo_c == "SECTOR PRIVADO"))    # solo una condición se cumple
+```
+
 
 ---
 .center[

@@ -3,7 +3,7 @@ title: "Curso herramientas de análisis con R"
 subtitle: "Clase 5: Un paquete para gobernarlos a todos"
 author: "Alex Bajaña"
 institute: "infoRmal"
-date: "2019/11 (updated: `r Sys.Date()`)"
+date: "2019/11 (Actualizado: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     # seal: false
@@ -18,8 +18,8 @@ class: inverse, center, middle
 
 # Tidyverse
 
-![](logo_tidy.jpg)
-![](load_tidyverse.png)
+![](img/logo_tidy.jpg)
+![](img/load_tidyverse.png)
 
 ---
 background-image: url(workflow.jpg)
@@ -300,13 +300,41 @@ filter(tabla,mes %in% c(5, 6, 7, 8))
 
 ¿Cual es el rango de ingresos de las empresas en estado activo que pertenecen a un grupo económico entre los primeros 6 meses del 2015?
 
-[Hint:]() sobre un vector númerico la función `min` devuelve el minimo y `máx` el m+aximo
+[Hint:]() sobre un vector númerico la función `min` devuelve el minimo y `máx` el máximo
 
 ---
 
 class: inverse, center, middle
 
 # arrange
+---
+# Operaciones con booleanos
+
+Intersección de condiciones.
+
+```{r, eval = FALSE}
+ filter(activ == "E", tipo_c == "SECTOR PRIVADO")        
+```
+
+Primera condición verdadera, segunda falsa.
+
+```{r, eval = FALSE}
+ filter(activ == "E", !tipo_c == "SECTOR PRIVADO")       
+
+```
+
+Unión
+
+```{r, eval = FALSE}
+ filter(activ == "E" | tipo_c == "SECTOR PRIVADO")       #  unión.
+```
+
+Solo una de las dos condiciones se cumple:
+
+```{r, eval=FALSE}
+ filter(xor(activ == "E", tipo_c == "SECTOR PRIVADO"))    # solo una condición se cumple
+```
+
 
 ---
 .center[
